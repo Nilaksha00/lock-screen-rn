@@ -1,4 +1,4 @@
-package com.lock_screen_rn;
+package com.lock_screen_interface_rn;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.lock_screen_rn"
+    namespace "com.lock_screen_interface_rn"
     defaultConfig {
-        applicationId "com.lock_screen_rn"
+        applicationId "com.lock_screen_interface_rn"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

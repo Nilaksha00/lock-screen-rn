@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "lock_screen_rn.app"
-               BlueprintName = "lock_screen_rn"
-               ReferencedContainer = "container:lock_screen_rn.xcodeproj">
+               BuildableName = "lock_screen_interface_rn.app"
+               BlueprintName = "lock_screen_interface_rn"
+               ReferencedContainer = "container:lock_screen_interface_rn.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "lock_screen_rnTests.xctest"
-               BlueprintName = "lock_screen_rnTests"
-               ReferencedContainer = "container:lock_screen_rn.xcodeproj">
+               BuildableName = "lock_screen_interface_rnTests.xctest"
+               BlueprintName = "lock_screen_interface_rnTests"
+               ReferencedContainer = "container:lock_screen_interface_rn.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "lock_screen_rn.app"
-            BlueprintName = "lock_screen_rn"
-            ReferencedContainer = "container:lock_screen_rn.xcodeproj">
+            BuildableName = "lock_screen_interface_rn.app"
+            BlueprintName = "lock_screen_interface_rn"
+            ReferencedContainer = "container:lock_screen_interface_rn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "lock_screen_rn.app"
-            BlueprintName = "lock_screen_rn"
-            ReferencedContainer = "container:lock_screen_rn.xcodeproj">
+            BuildableName = "lock_screen_interface_rn.app"
+            BlueprintName = "lock_screen_interface_rn"
+            ReferencedContainer = "container:lock_screen_interface_rn.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
