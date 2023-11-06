@@ -1,79 +1,64 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Lock Screen Interface with React Native
 
-# Getting Started
+This project is a simple lock screen interface developed using React Native. The lock screen interface allows the user to enter a 4-digit PIN to unlock the app. If the correct PIN is entered, an "Unlocked" alert appears. If an incorrect PIN is entered, the user is given a maximum of 3 attempts, and after three incorrect attempts, the keypad is locked for a minute.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+<br/>
 
-## Step 1: Start the Metro Server
+## User Interface
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+<b>Font:</b> Roboto (https://fonts.google.com/specimen/Roboto)
 
-```bash
-# using npm
-npm start
+<b>Colors:</b> #FAFAFA, #E15646, #5A7FD6
 
-# OR using Yarn
-yarn start
-```
+The sample lock screen interfaces are shown below
 
-## Step 2: Start your Application
+<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/2a6b59ca-7d12-4d0c-b5be-5480eba9cfd6" width="250"> 
+<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/6134cb08-59df-4a5e-9b01-93d89b94e7cc" width="250">
+<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/db1d0707-991f-44b9-99d4-1fb0c28a02bf" width="250">
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+<br/>
 
-### For Android
+## Features
 
-```bash
-# using npm
-npm run android
+<li>Custom keypad design using FlatList.</li>
+<li>Keypad feedback for each key press and a delete button to clear the last entered digit.</li>
+<li>Acceptance of a 4-digit PIN with the correct combination being '1234'.</li>
+<li>Display of error messages and feedback to the user based on PIN entry.</li>
+<li>Use of the default OS alert for notifications.</li>
+<li>Error states that change the UI based on the user's input.</li>
 
-# OR using Yarn
-yarn android
-```
 
-### For iOS
+<br/>
 
-```bash
-# using npm
-npm run ios
+## SetUp Instructions
 
-# OR using Yarn
-yarn ios
-```
+<ol>
+   <li>Ensure you have Node.js and npm installed on your computer</li>
+  <li>Clone the repository from GitHub
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+  ``` git clone https://github.com/Nilaksha00/lock-screen-rn.git```
+  </li>
+   <li>Install React Native CLI by running the following command
+      
+   ```npm install -g react-native-cli```
+   </li>
+   
+   <li>Navigate to the project directory
+   
+   ```cd lock-screen-rn```
+   </li>
+   <li>
+    Install project dependencies
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```npm install```
+   </li>
+   <li> Run the Application
+   
+   ```react-native run-android```</li>
+   <li>Run on Android or IOS emulator</li>
+</ol>
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
