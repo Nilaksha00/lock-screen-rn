@@ -62,13 +62,12 @@ const KeyPad: React.FC = () => {
 
   const handlePinSubmit = () => {
     if (pin.join('') == CORRECT_PIN.join('')) {
+      setPin(Array(4).fill(null));
+      setErrorCount(3);
       Alert.alert('Unlocked', '', [
         {
           text: 'OK',
-          onPress: () => {
-            setPin(Array(4).fill(null));
-            setErrorCount(3);
-          },
+          onPress: () => {console.log('OK Pressed')},
         },
       ]);
     } else {
