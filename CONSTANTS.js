@@ -1,6 +1,6 @@
-export const CORRECT_PIN = '1234';
+export const CORRECT_PIN = ['1', '2', '3', '4'];
 
-export const  COLORS = {
+export const COLORS = {
   background: '#FAFAFA',
   errorText: '#E15646',
   pinFill: '#E15646',

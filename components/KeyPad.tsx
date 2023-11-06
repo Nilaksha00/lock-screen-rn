@@ -1,18 +1,14 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
-  Dimensions,
-} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {COLORS, CORRECT_PIN} from '../CONSTANTS';
-import PinInput from './PinInput';
 
 const KeyPad: React.FC = () => {
   const [pin, setPin] = useState<(string | null)[]>(Array(4).fill(null));
+
+  useEffect(() => {
+    pin[3] != null && handlePinSubmit();
+  }, [pin]);
 
   const keypadData: string[] = [
     '1',
@@ -43,11 +39,20 @@ const KeyPad: React.FC = () => {
     );
 
   const handleKeyPress = (key: string) => {
-    for (let i = 0; i < 4; i++) {
+    for (let i: number = 0; i < 4; i++) {
       if (pin[i] == null) {
         setPin([...pin.slice(0, i), key, ...pin.slice(i + 1)]);
-        break;
+        return;
       }
+    }
+  };
+
+  const handlePinSubmit = () => {
+    if (pin.join('') == CORRECT_PIN.join('')) {
+      console.log('Correct PIN!', pin.join(''), CORRECT_PIN.join(''));
+    } else {
+      console.log('Wrong PIN!', pin.join(''), CORRECT_PIN.join(''));
+      // setPin(Array(4).fill(null));
     }
   };
 
@@ -128,7 +133,7 @@ const styles = StyleSheet.create({
     height: 70,
   },
   disabledKey: {
-    border: 'none',
+    borderStyle: 'none',
     margin: 10,
     padding: 10,
     width: 70,
