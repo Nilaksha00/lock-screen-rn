@@ -13,9 +13,9 @@ This project is a simple lock screen interface developed using React Native. The
 
 The sample lock screen interfaces are shown below
 
-<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/2a6b59ca-7d12-4d0c-b5be-5480eba9cfd6" width="250"> 
-<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/6134cb08-59df-4a5e-9b01-93d89b94e7cc" width="250">
-<img src="https://github.com/Nilaksha00/lock-screen-rn/assets/86180339/db1d0707-991f-44b9-99d4-1fb0c28a02bf" width="250">
+<img src="https://raw.githubusercontent.com/Nilaksha00/lock-screen-rn/main/assets/images/UI1.jpeg" width="250"> 
+<img src="https://raw.githubusercontent.com/Nilaksha00/lock-screen-rn/main/assets/images/UI2.jpeg" width="250">
+<img src="https://raw.githubusercontent.com/Nilaksha00/lock-screen-rn/main/assets/images/UI3.jpeg" width="250">
 
 <br/>
 
