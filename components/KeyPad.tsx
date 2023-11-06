@@ -1,14 +1,40 @@
-import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  Alert,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {COLORS, CORRECT_PIN} from '../CONSTANTS';
 
 const KeyPad: React.FC = () => {
   const [pin, setPin] = useState<(string | null)[]>(Array(4).fill(null));
+  const [countdown, setCountdown] = useState<number>(60);
+  const [errorCount, setErrorCount] = useState<number>(3);
+  const [isLocked, setIsLocked] = useState<boolean>(false);
 
   useEffect(() => {
     pin[3] != null && handlePinSubmit();
   }, [pin]);
+
+  useEffect(() => {
+    if (errorCount == 0) {
+      setIsLocked(true);
+      const interval = setInterval(() => {
+        setCountdown(countdown - 1);
+        if (countdown == 1) {
+          setErrorCount(3);
+          setCountdown(60);
+          clearInterval(interval);
+          setIsLocked(false);
+        }
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [countdown, errorCount]);
 
   const keypadData: string[] = [
     '1',
@@ -25,19 +51,6 @@ const KeyPad: React.FC = () => {
     'x',
   ];
 
-  const renderItem = ({item}: {item: string}) =>
-    item == 'x' ? (
-      <TouchableOpacity style={styles.clearKey} onPress={() => handleClear()}>
-        <ClearButton />
-      </TouchableOpacity>
-    ) : (
-      <TouchableOpacity
-        style={item == '' ? styles.disabledKey : styles.key}
-        onPress={() => handleKeyPress(item)}>
-        <Text style={styles.keyText}>{item}</Text>
-      </TouchableOpacity>
-    );
-
   const handleKeyPress = (key: string) => {
     for (let i: number = 0; i < 4; i++) {
       if (pin[i] == null) {
@@ -49,10 +62,28 @@ const KeyPad: React.FC = () => {
 
   const handlePinSubmit = () => {
     if (pin.join('') == CORRECT_PIN.join('')) {
-      console.log('Correct PIN!', pin.join(''), CORRECT_PIN.join(''));
+      Alert.alert('Unlocked', '', [
+        {
+          text: 'OK',
+          onPress: () => {
+            setPin(Array(4).fill(null));
+            setErrorCount(3);
+          },
+        },
+      ]);
     } else {
-      console.log('Wrong PIN!', pin.join(''), CORRECT_PIN.join(''));
-      // setPin(Array(4).fill(null));
+      setErrorCount(errorCount - 1);
+      setPin(Array(4).fill(null));
+      if (errorCount > 1) {
+        Alert.alert('Incorrect Pin', 'Try again ', [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]);
+      }
+      if (errorCount == 1) {
+        Alert.alert('Incorrect Pin', 'You have no more attempts left', [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]);
+      }
     }
   };
 
@@ -67,9 +98,32 @@ const KeyPad: React.FC = () => {
     }
   };
 
+  const renderItem = ({item}: {item: string}) =>
+    item == 'x' ? (
+      <TouchableOpacity style={styles.clearKey} onPress={() => handleClear()}>
+        <ClearButton />
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity
+        style={item == '' ? styles.disabledKey : styles.key}
+        disabled={item == '' ? true : false || isLocked}
+        onPress={() => handleKeyPress(item)}>
+        <Text style={styles.keyText}>{item}</Text>
+      </TouchableOpacity>
+    );
+
   return (
     <View style={styles.container}>
       <View style={styles.flexItem}>
+        {errorCount < 3 && errorCount >= 1 && (
+          <Text style={styles.errorText}>
+            You have {errorCount} attempts left.
+          </Text>
+        )}
+        {errorCount == 0 && (
+          <Text style={styles.errorText}>Try again in {countdown} seconds</Text>
+        )}
+
         <View style={styles.pinContainer}>
           {pin.map((item, index) => (
             <View
@@ -115,7 +169,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   flexItem: {
-    marginVertical: 35,
+    marginVertical: 50,
+    alignItems: 'center',
   },
   pinContainer: {
     flexDirection: 'row',
@@ -133,7 +188,6 @@ const styles = StyleSheet.create({
     height: 70,
   },
   disabledKey: {
-    borderStyle: 'none',
     margin: 10,
     padding: 10,
     width: 70,
@@ -165,6 +219,13 @@ const styles = StyleSheet.create({
   },
   fillPinItem: {
     backgroundColor: COLORS.otherElements,
+  },
+  errorText: {
+    position: 'absolute',
+    fontSize: 14,
+    fontFamily: 'Roboto-Medium',
+    color: COLORS.errorText,
+    top: -40,
   },
 });
 

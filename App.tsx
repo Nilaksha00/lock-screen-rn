@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import KeyPad from './components/KeyPad';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import PinInput from './components/PinInput';
 import {COLORS} from './CONSTANTS';
 
 const dimension = Dimensions.get('window');
@@ -21,7 +20,7 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   backgroundStyle: {
     flex: 1,
-    paddingVertical: dimension.height * 0.2,
+    paddingVertical: dimension.height * 0.18,
   },
   container: {
     flex: 1,
