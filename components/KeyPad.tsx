@@ -16,10 +16,12 @@ const KeyPad: React.FC = () => {
   const [errorCount, setErrorCount] = useState<number>(3);
   const [isLocked, setIsLocked] = useState<boolean>(false);
 
+  // Handle everytime when user enters a 4 digit pin
   useEffect(() => {
     pin[3] != null && handlePinSubmit();
   }, [pin]);
 
+  // Handle the countdown timer when user enter an incorrect pin
   useEffect(() => {
     if (errorCount == 0) {
       setIsLocked(true);
@@ -36,6 +38,7 @@ const KeyPad: React.FC = () => {
     }
   }, [countdown, errorCount]);
 
+  // Data for the keypad buttons - Numbers from 0 to 9 and a clear button
   const keypadData: string[] = [
     '1',
     '2',
@@ -51,6 +54,7 @@ const KeyPad: React.FC = () => {
     'x',
   ];
 
+  // Handle the key press event
   const handleKeyPress = (key: string) => {
     for (let i: number = 0; i < 4; i++) {
       if (pin[i] == null) {
@@ -60,7 +64,9 @@ const KeyPad: React.FC = () => {
     }
   };
 
+  // Handle the pin submit event - Check if the pin is correct or not
   const handlePinSubmit = () => {
+    // Check if the pin is correct
     if (pin.join('') == CORRECT_PIN.join('')) {
       setPin(Array(4).fill(null));
       setErrorCount(3);
@@ -73,11 +79,13 @@ const KeyPad: React.FC = () => {
     } else {
       setErrorCount(errorCount - 1);
       setPin(Array(4).fill(null));
+      // Check if the user has any more attempts left
       if (errorCount > 1) {
         Alert.alert('Incorrect Pin', 'Try again ', [
           {text: 'OK', onPress: () => console.log('OK Pressed')},
         ]);
       }
+      // If the user has no more attempts left, lock the keypad and start the countdown timer
       if (errorCount == 1) {
         Alert.alert('Incorrect Pin', 'You have no more attempts left', [
           {text: 'OK', onPress: () => console.log('OK Pressed')},
@@ -86,6 +94,7 @@ const KeyPad: React.FC = () => {
     }
   };
 
+  // Handle the clear button press event
   const handleClear = () => {
     let tempPin: (string | null)[] = [...pin];
     for (let i = 3; i >= 0; i--) {
@@ -97,6 +106,7 @@ const KeyPad: React.FC = () => {
     }
   };
 
+  // Render the keypad buttons
   const renderItem = ({item}: {item: string}) =>
     item == 'x' ? (
       <TouchableOpacity style={styles.clearKey} onPress={() => handleClear()}>
@@ -147,6 +157,7 @@ const KeyPad: React.FC = () => {
   );
 };
 
+// Clear button SVG
 const ClearButton: React.FC = () => {
   return (
     <Svg
