@@ -1,21 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import KeyPad from './components/KeyPad';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import PinInput from './components/PinInput';
+import {COLORS} from './CONSTANTS';
 
 const dimension = Dimensions.get('window');
 
@@ -32,25 +20,22 @@ function App(): JSX.Element {
 
 const styles = StyleSheet.create({
   backgroundStyle: {
-    // backgroundColor: '#FAFAFA',
-    backgroundColor: 'red',
-    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    height: dimension.height,
-    width: dimension.width,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1,
+    paddingVertical: dimension.height * 0.2,
   },
   container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+    width: dimension.width,
+    height: dimension.height,
     alignItems: 'center',
     justifyContent: 'center',
   },
   textStyle: {
-    fontSize: 20,
-    fontFamily: 'Roboto-Regular',
-    color: '#5A7FD6',
-    // marginTop: 100,
-    // marginBottom: 50,
-  },
+    fontSize: 26,
+    fontFamily: 'Roboto-Light',
+    color: COLORS.otherElements,
+  }
 });
 
 export default App;
